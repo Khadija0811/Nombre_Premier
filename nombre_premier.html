@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Nombre Premier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f6ff;
+      margin: 0;
+      padding: 2rem;
+      color: #0d1b2a;
+    }
+
+    .card {
+      background: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 0.8rem;
+      padding: 0.7rem;
+      font-size: 1rem;
+      background: #1d4ed8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #193ea7;
+    }
+
+    #resultat {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Tester si le nombre premier</h2>
+
+    <input id="n" type="number" placeholder="Entrez un nombre">
+    <button onclick="tester()">Vérifier</button>
+
+    <p id="resultat"></p>
+  </div>
+
+  <script>
+    function estPremier(nombre) {
+      if (nombre < 2) {
+        return false;
+      }
+
+      let div = 2;
+      while (div * div <= nombre) {
+        if (nombre % div === 0) {
+          return false;
+        }
+        div = div + 1;
+      }
+
+      return true;
+    }
+
+    function tester() {
+      const n = Number(document.getElementById("n").value);
+      const resultat = document.getElementById("resultat");
+
+      if (estPremier(n)) {
+        resultat.textContent = n + " est premier";
+      } else {
+        resultat.textContent = n + " n'est pas premier";
+      }
+    }
+  </script>
+
+</body>
+</html>
